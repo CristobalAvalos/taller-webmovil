@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tituloheader{
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    background-color: rgba(241, 65, 65, 0.685);
+    padding: 3px;
+    border-radius: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 5px;
+}
+
+.imagenGears{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 35%;
+    width: 35%;
+    margin: auto;
+    padding: 10px;
+}
+
+.contenedorScript{
+    margin: 20px;
+}
+
+.tituloGear{
+    color: rgba(255, 255, 255, 0.829);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: large;
+    font-weight: bold;
+}
+
+.textoGear{
+    color: rgba(255, 255, 255, 0.904);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: medium;
+}
+
+body{
+    background-color: rgb(19, 18, 70);
+    
+}
+
+.textoIngles{
+    text-align: center;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightskyblue;
+    width: 50%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.contenedorAclaracion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
