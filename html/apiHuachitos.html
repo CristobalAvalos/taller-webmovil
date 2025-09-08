@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Animalitos en adopcion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
-    
-    <header>Animalitos en adopcion!</header>
-    
-    <main>
+<body class="bg-gray-100 min-h-screen">
+
+    <header class="bg-green-600 text-white flex items-center   py-4 text-2x font-bold shadow-md" >
         
-        <div class = "animalitos-en-adopcion"></div>
+        <h1 class="text-xl md:text-2xl lg:text-3xl font-bold text-start flex-1 ml-4">Animalitos en adopcion</h1>
+        
+        <div class="flex space-x-4">
+           
+            <a href="home.html" class = "bg-white text-green-600 mr-4">Inicio</a>
+
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-6">
+        <div class="animalitos-en-adopcion grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        </div>
     </main>
 
     <script src="../js/item.js"></script>
