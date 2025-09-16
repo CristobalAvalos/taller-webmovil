@@ -88,6 +88,46 @@ async function getAnimalitos () {
         console.error(error);
     }
 
+};
+async function filtrarPor(campo, valor) {
+  
+    try {
+    
+    const response = await fetch(`https://huachitos.cl/api/animales/${campo}/${valor}`);
+    const resultados = await response.json();
+    const animales = resultados.data;
+
+    const contenedor = document.querySelector(".animalitos-en-adopcion");
+    contenedor.innerHTML = "";
+
+    animales.forEach(animal => Animalito(animal));
+  } catch (error) {
+    console.error(error);
+  }
+}
+function inicializarMenus(menus) {
+    menus.forEach(({ btn, menu }) => {
+        const btnElement = document.getElementById(btn);
+        const menuElement = document.getElementById(menu);
+
+        if (!btnElement || !menuElement) return;
+
+
+        btnElement.addEventListener("click", (e) => {
+            e.stopPropagation(); 
+            menuElement.classList.toggle("hidden");
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!btnElement.contains(event.target) && !menuElement.contains(event.target)) {
+                menuElement.classList.add("hidden");
+            }
+        });
+    });
 }
 
-getAnimalitos();  
+document.addEventListener("DOMContentLoaded", () => {
+  inicializarMenus([{ btn: "btn-region", menu: "menu-region" }, { btn: "btn-tipo", menu: "menu-tipo" }, { btn: "btn-comuna", menu: "menu-comuna" },]);
+});
+
+filtrarAnimalitosPorRegion(region);
