@@ -130,14 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
   inicializarMenus([{ btn: "btn-region", menu: "menu-region" }, { btn: "btn-tipo", menu: "menu-tipo" }, { btn: "btn-comuna", menu: "menu-comuna" },]);
 });
 
-const menuRegion = document.getElementById('menu-region');
-regiones.forEach((nombre, index) => {
-  const btn = document.createElement('button');
-  btn.textContent = nombre;
-  btn.className = "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left";
-  btn.onclick = () => filtrarPor('region', (index + 1).toString());
-  menuRegion.appendChild(btn);
-});
 
 
 filtrarAnimalitosPorRegion(region);
