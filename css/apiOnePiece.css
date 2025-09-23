@@ -1,12 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 .tituloheader{
     text-align: center;
     font-size: 40px;
     color: white;
-    background-color: rgba(241, 65, 65, 0.685);
+    background-color: rgba(241, 65, 65, 0.767);
     padding: 3px;
     border-radius: 5px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -21,6 +19,8 @@
     width: 35%;
     margin: auto;
     padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.384);
+    border-radius: 10px;
 }
 
 .contenedorScript{
@@ -28,32 +28,32 @@
 }
 
 .tituloGear{
-    color: rgba(255, 255, 255, 0.829);
+    color: rgba(0, 0, 0, 0.829);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: large;
     font-weight: bold;
 }
 
 .textoGear{
-    color: rgba(255, 255, 255, 0.904);
+    color: rgba(0, 0, 0, 0.904);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: medium;
 }
 
 body{
-    background-color: rgb(19, 18, 70);
+    background-color: rgb(255, 255, 255);
     
 }
 
 .textoIngles{
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: lightskyblue;
-    width: 50%;
+    width: 90%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -61,4 +61,5 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }

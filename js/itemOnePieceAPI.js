@@ -13,6 +13,7 @@ function Gear(gear) {
     descripcionGear.className = "textoGear";
 
     const cartaGear = document.createElement("div");
+    cartaGear.className = "bg-white shadow-xl rounded-lg p-4 mb-4";
     cartaGear.appendChild(title);
     cartaGear.appendChild(descripcionGear);
     cartaGear.appendChild(document.createElement("br"));
