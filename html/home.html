@@ -7,25 +7,58 @@
     <title>Home</title>
 </head>
 
-<body>
-    <header class="font-bold text-center text-3xl p-4 bg-blue-500 text-white">
-        Escoga su sección de interés
+<body class ="bg-gray-100 min-h-screen">
+    <header class="font-bold text-center text-2xl md:text-3xl p-4 bg-blue-500 text-white shadow-md">
+        Escoja su sección de interés
     </header>
 
-    <grid class="grid grid-cols-4 p-4 h-full">
-        <div class="mr-2 p-1">
-            <h1 class="text-center font-semibold text-lg bg-blue-100 mx-4 justify-center rounded-lg">Luffy y sus marchas</h1>   
-            <button class="font-bold text-sm shadow-lg p-2 w-full h-full rounded-lg"> <a href="apiOnePiece.html"> <img class= "w-100 h-100" src="https://www.magicianscircle.it/wp-content/uploads/2024/04/ONP-TSHIRT-LUFFYAF_DES.png" alt="Inicio"> </a> </button>
-        </div>
-        <div class="mr-2 p-1">
-            <h1 class="text-center font-semibold text-lg bg-green-100 mx-4 justify-center rounded-lg">Animalitos en adopción por Huachitos.cl</h1>
-            <button class="font-bold text-sm shadow-lg p-2 w-full h-full rounded-lg"> <a href="apiHuachitos.html"> <img class= "w-100 h-100" src="https://media.tenor.com/wsteJfd__v0AAAAe/perro.png" alt="Inicio"> </a> </button>   
-        </div>
-        <div class="mr-2 p-1">Pongan aca una fotillo q los mande a su api</div>
-        <div class="mr-2 p-1">
-            <h1 class="text-center font-semibold text-lg bg-red-100 mx-4 justify-center rounded-lg">Monotypes al azar!</h1>
-            <button class="font-bold text-sm shadow-lg p-2 w-full h-full rounded-lg"> <a href="apiPokes.html"> <img class= "w-100 h-100" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5WnUbKi03M0evqkL5qB4LOsFO_6BLmpj1E9O9TGiJHkYFSFL4MOaovmkSUTiGozW4WG53uV5R0YIvPxXVX2bOdv-ThyphenhyphenA98n_dvaeMwM6OtHe3H8lk3q7vYmnHDLrp-qFuaO2SH2xq8x0/s1600/pokemon_types_wheel_by_kamionero-d6u6o9i.png" alt="Inicio"> </a> </button>
-        </div>
-    </grid>
+    <main class="p-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
+        <div class="bg-white rounded-lg shadow p-2 flex flex-col items-center">
+            <h1 class="text-center font-semibold text-lg bg-blue-100 px-2 py-1 rounded-lg w-full mb-2">
+            Luffy y sus marchas
+            </h1>   
+            <a href="apiOnePiece.html" class="w-full flex justify-center">
+            <img class="max-w-full h-auto rounded-lg" 
+                src="https://www.magicianscircle.it/wp-content/uploads/2024/04/ONP-TSHIRT-LUFFYAF_DES.png" 
+                alt="Inicio">
+            </a>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-2 flex flex-col items-center">
+            <h1 class="text-center font-semibold text-lg bg-green-100 px-2 py-1 rounded-lg w-full mb-2">
+            Animalitos en adopción por Huachitos.cl
+            </h1>
+            <a href="apiHuachitos.html" class="w-full flex justify-center">
+            <img class="h-120 w-120 object-contain rounded-lg mx-auto" 
+                src="https://media.tenor.com/wsteJfd__v0AAAAe/perro.png" 
+                alt="Inicio">
+            </a>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-2 flex flex-col items-center">
+            <h1 class="text-center font-semibold text-lg bg-yellow-100 px-2 py-1 rounded-lg w-full mb-2">
+            Próxima API
+            </h1>
+            <a href="#" class="w-full flex justify-center">
+            <img class="max-w-full h-auto rounded-lg" 
+                src="https://via.placeholder.com/200" 
+                alt="API Placeholder">
+            </a>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-2 flex flex-col items-center">
+            <h1 class="text-center font-semibold text-lg bg-red-100 px-2 py-1 rounded-lg w-full mb-2">
+            Monotypes al azar!
+            </h1>
+            <a href="apiPokes.html" class="w-full flex justify-center">
+            <img class="max-w-full h-auto rounded-lg" 
+               src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5WnUbKi03M0evqkL5qB4LOsFO_6BLmpj1E9O9TGiJHkYFSFL4MOaovmkSUTiGozW4WG53uV5R0YIvPxXVX2bOdv-ThyphenhyphenA98n_dvaeMwM6OtHe3H8lk3q7vYmnHDLrp-qFuaO2SH2xq8x0/s1600/pokemon_types_wheel_by_kamionero-d6u6o9i.png" 
+               alt="API Placeholder">
+        </a>
+      </div>
+    </div>
+    </main>
 </body>
+</html>

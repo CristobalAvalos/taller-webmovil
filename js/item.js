@@ -71,23 +71,21 @@ function crearTextoColor (labelText, valorText){
 
 async function getAnimalitos () {
 
-    try{    
-
+    try {
         const response = await fetch(apiUrl);
         const resultados = await response.json();
-
         const animales = resultados.data;
 
-        for(let i = 0; i< animales.length; i++){
+        const contenedor = document.querySelector(".animalitos-en-adopcion");
+        contenedor.innerHTML = "";
 
-            Animalito(animales[i]);
-        }
-        console.log(animales);
+        animales.forEach(animal => Animalito(animal));
+
+        const filtroActivo = document.getElementById("filtro-activo");
+        filtroActivo.textContent = "Mostrando todos los animales";
     } catch (error) {
-
         console.error(error);
     }
-
 };
 async function filtrarPor(campo, valor) {
   
@@ -99,6 +97,14 @@ async function filtrarPor(campo, valor) {
 
     const contenedor = document.querySelector(".animalitos-en-adopcion");
     contenedor.innerHTML = "";
+
+    const filtroActivo = document.getElementById("filtro-activo");
+    let textoFiltro = "";
+    if (campo === "region") {textoFiltro = `Mostrando animales de la región: ${nombreRegion(valor)}`;
+}
+    else if (campo === "tipo") textoFiltro = valor.toLowerCase() === "roedor" ? "Mostrando roedores" : `Mostrando ${valor}s`;
+    else textoFiltro = `Filtrando por ${campo}: ${valor}`;
+    filtroActivo.textContent = textoFiltro;
 
     animales.forEach(animal => Animalito(animal));
   } catch (error) {
@@ -127,9 +133,30 @@ function inicializarMenus(menus) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  inicializarMenus([{ btn: "btn-region", menu: "menu-region" }, { btn: "btn-tipo", menu: "menu-tipo" }, { btn: "btn-comuna", menu: "menu-comuna" },]);
+    getAnimalitos();
+    inicializarMenus([{ btn: "btn-region", menu: "menu-region" }, { btn: "btn-tipo", menu: "menu-tipo" }, { btn: "btn-comuna", menu: "menu-comuna" },]);
 });
 
 
+const regiones = {
+    1: "Arica y Parinacota",
+    2: "Tarapacá",
+    3: "Antofagasta",
+    4: "Atacama",
+    5: "Coquimbo",
+    6: "Valparaíso",
+    7: "Metropolitana",
+    8: "O'Higgins",
+    9: "Maule",
+    10: "Ñuble",
+    11: "Biobío",
+    12: "La Araucanía",
+    13: "Los Ríos",
+    14: "Los Lagos",
+    15: "Aysén",
+    16: "Magallanes"
+};
 
-filtrarAnimalitosPorRegion(region);
+function nombreRegion(id) {
+    return regiones[id] || "Desconocida";
+}
