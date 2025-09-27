@@ -47,7 +47,10 @@ async function cargarClima() {
             `;
             card.addEventListener('click', function(e) {
                 if (expandedCard && expandedCard !== card) {
-                    expandedCard.classList.remove('fixed', 'inset-0', 'z-50', 'overflow-y-auto', 'w-screen', 'h-screen', 'bg-blue-100');
+                    expandedCard.classList.remove(
+                        'fixed', 'inset-0', 'z-50', 'overflow-y-auto', 'overflow-x-auto',
+                        'h-screen', 'bg-blue-100', 'max-w-full', 'right-0', 'left-0', 'box-border'
+                    );
                     expandedCard.querySelector('.card-img').classList.remove('h-64');
                     expandedCard.querySelector('.card-title').classList.remove('text-3xl');
                     expandedCard.querySelector('.card-temp').classList.remove('text-xl');
@@ -58,7 +61,10 @@ async function cargarClima() {
                 }
                 const extra = card.querySelector('.extra-details');
                 if (card.classList.contains('fixed')) {
-                    card.classList.remove('fixed', 'inset-0', 'z-50', 'overflow-y-auto', 'w-screen', 'h-screen', 'bg-blue-100');
+                    card.classList.remove(
+                        'fixed', 'inset-0', 'z-50', 'overflow-y-auto', 'overflow-x-auto',
+                        'h-screen', 'bg-blue-100', 'max-w-full', 'right-0', 'left-0', 'box-border'
+                    );
                     card.querySelector('.card-img').classList.remove('h-64');
                     card.querySelector('.card-title').classList.remove('text-3xl');
                     card.querySelector('.card-temp').classList.remove('text-xl');
@@ -67,7 +73,10 @@ async function cargarClima() {
                     extra.classList.add('hidden');
                     expandedCard = null;
                 } else {
-                    card.classList.add('fixed', 'inset-0', 'z-50', 'overflow-y-auto', 'w-screen', 'h-screen', 'bg-blue-100');
+                    card.classList.add(
+                        'fixed', 'inset-0', 'z-50', 'overflow-y-auto', 'overflow-x-auto',
+                        'h-screen', 'bg-blue-100', 'max-w-full', 'right-0', 'left-0', 'box-border'
+                    );
                     card.querySelector('.card-img').classList.add('h-64');
                     card.querySelector('.card-title').classList.add('text-3xl');
                     card.querySelector('.card-temp').classList.add('text-xl');
