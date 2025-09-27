@@ -1,0 +1,24 @@
+@media (max-width: 1087px) {
+  header .container {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-height: 160px;
+    position: relative;
+  }
+  header h1 {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  header .absolute {
+    position: static !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    transform: none !important;
+    right: auto !important;
+    top: auto !important;
+  }
+}
