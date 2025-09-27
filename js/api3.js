@@ -22,16 +22,16 @@ async function cargarClima() {
     const grid = document.querySelector('.grid');
     let expandedCard = null;
     let filteredCities = cities;
+
     function renderCities(list) {
         grid.innerHTML = '';
         for (const city of list) {
             const res = city._weatherData;
             const weather = res ? res.current_weather : null;
             const card = document.createElement('div');
-            card.className = 'bg-white rounded shadow p-2 m-2 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col';
-            card.style.maxWidth = '100%';
+            card.className = 'bg-white rounded shadow p-2 m-2 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col max-w-full';
             card.innerHTML = `
-                <img src="${city.img}" alt="${city.name}" class="rounded w-full h-40 object-cover mb-2 card-img" style="transition: all 0.3s;" />
+                <img src="${city.img}" alt="${city.name}" class="rounded w-full h-40 object-cover mb-2 card-img transition-all duration-300" />
                 <div class="flex-1">
                     <h2 class="font-bold text-lg mb-1 card-title">${city.name}</h2>
                     <p class="text-gray-700 card-temp">Temperatura: ${weather ? weather.temperature + '°C' : 'Cargando...'}</p>
@@ -47,15 +47,7 @@ async function cargarClima() {
             `;
             card.addEventListener('click', function(e) {
                 if (expandedCard && expandedCard !== card) {
-                    expandedCard.classList.remove('fixed', 'inset-0', 'z-50', 'overflow-y-auto');
-                    expandedCard.style.width = '';
-                    expandedCard.style.height = '';
-                    expandedCard.style.left = '';
-                    expandedCard.style.top = '';
-                    expandedCard.style.right = '';
-                    expandedCard.style.bottom = '';
-                    expandedCard.style.position = '';
-                    expandedCard.style.background = '';
+                    expandedCard.classList.remove('fixed', 'inset-0', 'z-50', 'overflow-y-auto', 'w-screen', 'h-screen', 'bg-blue-100');
                     expandedCard.querySelector('.card-img').classList.remove('h-64');
                     expandedCard.querySelector('.card-title').classList.remove('text-3xl');
                     expandedCard.querySelector('.card-temp').classList.remove('text-xl');
@@ -66,15 +58,7 @@ async function cargarClima() {
                 }
                 const extra = card.querySelector('.extra-details');
                 if (card.classList.contains('fixed')) {
-                    card.classList.remove('fixed', 'inset-0', 'z-50', 'overflow-y-auto');
-                    card.style.width = '';
-                    card.style.height = '';
-                    card.style.left = '';
-                    card.style.top = '';
-                    card.style.right = '';
-                    card.style.bottom = '';
-                    card.style.position = '';
-                    card.style.background = '';
+                    card.classList.remove('fixed', 'inset-0', 'z-50', 'overflow-y-auto', 'w-screen', 'h-screen', 'bg-blue-100');
                     card.querySelector('.card-img').classList.remove('h-64');
                     card.querySelector('.card-title').classList.remove('text-3xl');
                     card.querySelector('.card-temp').classList.remove('text-xl');
@@ -83,15 +67,7 @@ async function cargarClima() {
                     extra.classList.add('hidden');
                     expandedCard = null;
                 } else {
-                    card.classList.add('fixed', 'inset-0', 'z-50', 'overflow-y-auto');
-                    card.style.width = '100vw';
-                    card.style.height = '100vh';
-                    card.style.left = '0';
-                    card.style.top = '0';
-                    card.style.right = '0';
-                    card.style.bottom = '0';
-                    card.style.position = 'fixed';
-                    card.style.background = '#e0f2fe';
+                    card.classList.add('fixed', 'inset-0', 'z-50', 'overflow-y-auto', 'w-screen', 'h-screen', 'bg-blue-100');
                     card.querySelector('.card-img').classList.add('h-64');
                     card.querySelector('.card-title').classList.add('text-3xl');
                     card.querySelector('.card-temp').classList.add('text-xl');
@@ -116,89 +92,7 @@ async function cargarClima() {
         filteredCities = cities.filter(c => c.name.toLowerCase().includes(valor) || c.region.toLowerCase().includes(valor));
         renderCities(filteredCities);
     }
-        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current_weather=true`);
-        const data = await res.json();
-        const weather = data.current_weather;
-        const card = document.createElement('div');
-        card.className = 'bg-white rounded shadow p-2 m-2 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col';
-        card.style.maxWidth = '100%';
-        card.innerHTML = `
-            <img src="${city.img}" alt="${city.name}" class="rounded w-full h-40 object-cover mb-2 card-img" style="transition: all 0.3s;" />
-            <div class="flex-1">
-                <h2 class="font-bold text-lg mb-1 card-title">${city.name}</h2>
-                <p class="text-gray-700 card-temp">Temperatura: ${weather.temperature}°C</p>
-                <p class="text-gray-500 card-wind">Viento: ${weather.windspeed} km/h</p>
-                <p class="text-gray-400 card-desc">Clima: ${getWeatherDescription(weather.weathercode)}</p>
-                <div class="extra-details hidden mt-2">
-                    <p class="text-gray-600">Latitud: ${city.lat}</p>
-                    <p class="text-gray-600">Longitud: ${city.lon}</p>
-                    <p class="text-gray-600">Código clima: ${weather.weathercode}</p>
-                </div>
-            </div>
-        `;
-        card.addEventListener('click', function(e) {
-            // Evitar que se expanda si ya está expandida
-            if (expandedCard && expandedCard !== card) {
-                // Contraer la anterior
-                expandedCard.classList.remove('fixed', 'inset-0', 'z-50', 'overflow-y-auto');
-                expandedCard.style.width = '';
-                expandedCard.style.height = '';
-                expandedCard.style.left = '';
-                expandedCard.style.top = '';
-                expandedCard.style.right = '';
-                expandedCard.style.bottom = '';
-                expandedCard.style.position = '';
-                expandedCard.style.background = '';
-                expandedCard.querySelector('.card-img').classList.remove('h-64');
-                expandedCard.querySelector('.card-title').classList.remove('text-3xl');
-                expandedCard.querySelector('.card-temp').classList.remove('text-xl');
-                expandedCard.querySelector('.card-wind').classList.remove('text-lg');
-                expandedCard.querySelector('.card-desc').classList.remove('text-lg');
-                expandedCard.querySelector('.extra-details').classList.add('hidden');
-                expandedCard = null;
-            }
-            const extra = card.querySelector('.extra-details');
-            if (card.classList.contains('fixed')) {
-                // Contraer
-                card.classList.remove('fixed', 'inset-0', 'z-50', 'overflow-y-auto');
-                card.style.width = '';
-                card.style.height = '';
-                card.style.left = '';
-                card.style.top = '';
-                card.style.right = '';
-                card.style.bottom = '';
-                card.style.position = '';
-                card.style.background = '';
-                card.querySelector('.card-img').classList.remove('h-64');
-                card.querySelector('.card-title').classList.remove('text-3xl');
-                card.querySelector('.card-temp').classList.remove('text-xl');
-                card.querySelector('.card-wind').classList.remove('text-lg');
-                card.querySelector('.card-desc').classList.remove('text-lg');
-                extra.classList.add('hidden');
-                expandedCard = null;
-            } else {
-                // Expandir
-                card.classList.add('fixed', 'inset-0', 'z-50', 'overflow-y-auto');
-                card.style.width = '100vw';
-                card.style.height = '100vh';
-                card.style.left = '0';
-                card.style.top = '0';
-                card.style.right = '0';
-                card.style.bottom = '0';
-                card.style.position = 'fixed';
-                card.style.background = '#e0f2fe';
-                card.querySelector('.card-img').classList.add('h-64');
-                card.querySelector('.card-title').classList.add('text-3xl');
-                card.querySelector('.card-temp').classList.add('text-xl');
-                card.querySelector('.card-wind').classList.add('text-lg');
-                card.querySelector('.card-desc').classList.add('text-lg');
-                extra.classList.remove('hidden');
-                expandedCard = card;
-            }
-            e.stopPropagation();
-        });
-        grid.appendChild(card);
-    }
+}
 
 // Traducción de weathercode a texto legible
 function getWeatherDescription(code) {
