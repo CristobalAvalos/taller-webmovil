@@ -41,7 +41,7 @@
                         </svg>
                     </button>
 
-                    <div id="menu-region" class="absolute left-0 mt-2 w-full sm:w-40 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 hidden">
+                    <div id="menu-region" class="absolute left-0 mt-2 w-full sm:w-40 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 hidden overflow-y-auto max-h-60 z-50">
                         <button onclick="filtrarPor('region', '1')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Región de Arica y Parinacota</button>
                             <button onclick="filtrarPor('region', '2')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Región de Tarapacá</button>
                             <button onclick="filtrarPor('region', '3')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Región de Antofagasta</button>
@@ -69,7 +69,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
-                    <div id="menu-tipo" class="absolute left-0 mt-2 w-full sm:w-40 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 hidden">
+                    <div id="menu-tipo" class="absolute left-0 mt-2 w-full sm:w-40 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 hidden overflow-y-auto max-h-60 z-49">
                         <button onclick="filtrarPor('tipo', 'Perro')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Perros</button>
                             <button onclick="filtrarPor('tipo', 'Gato')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Gatos</button>
                             <button onclick="filtrarPor('tipo', 'Conejo')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Conejos</button>
@@ -88,6 +88,10 @@
             <div class="animalitos-en-adopcion grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             </div>
         </main>
+
+            <footer class="bg-green-600 text-white p-4 text-center mt-8 relative z-10">
+    <p>&copy; 2025 Animalitos en adopción. Datos de <a href="https://huachitos.cl/docs" class="text-black hover:underline">Huachitos.cl</a>.</p>
+    </footer>
 
         <script src="../js/item.js"></script>
     </body>
