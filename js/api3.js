@@ -1,20 +1,20 @@
 // Usaremos Open-Meteo para obtener el clima de algunas ciudades
 const cities = [
-    { name: 'Santiago', lat: -33.45, lon: -70.66, region: 'Región Metropolitana', img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Ovalle', lat: -30.601, lon: -71.200, region: 'Coquimbo', img: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Vallenar', lat: -28.576, lon: -70.758, region: 'Atacama', img: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Coquimbo', lat: -29.953, lon: -71.343, region: 'Coquimbo', img: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80' },
-    { name: 'La Serena', lat: -29.904, lon: -71.244, region: 'Coquimbo', img: 'https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Antofagasta', lat: -23.650, lon: -70.400, region: 'Antofagasta', img: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Valparaíso', lat: -33.047, lon: -71.612, region: 'Valparaíso', img: 'https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Concepción', lat: -36.827, lon: -73.050, region: 'Biobío', img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Temuco', lat: -38.735, lon: -72.590, region: 'Araucanía', img: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Puerto Montt', lat: -41.469, lon: -72.942, region: 'Los Lagos', img: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Maipú', lat: -33.513, lon: -70.761, region: 'Región Metropolitana', img: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Puente Alto', lat: -33.614, lon: -70.575, region: 'Región Metropolitana', img: 'https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Ñuñoa', lat: -33.456, lon: -70.604, region: 'Región Metropolitana', img: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Providencia', lat: -33.426, lon: -70.617, region: 'Región Metropolitana', img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Las Condes', lat: -33.408, lon: -70.567, region: 'Región Metropolitana', img: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80' }
+    { name: 'Santiago', lat: -33.45, lon: -70.66, region: 'Región Metropolitana', img: 'https://dynamic-media.tacdn.com/media/photo-o/2f/0b/0a/34/caption.jpg?w=700&h=500&s=1' },
+    { name: 'Ovalle', lat: -30.601, lon: -71.200, region: 'Coquimbo', img: 'https://media.viajando.travel/p/d5f6e02244e67f87124de7f9a67100dc/adjuntos/236/imagenes/000/680/0000680976/ovallejpeg.jpeg' },
+    { name: 'Vallenar', lat: -28.576, lon: -70.758, region: 'Atacama', img: 'https://www.geovirtual2.cl/Museovirtual/Vallenar-Atacama-14393n.jpg' },
+    { name: 'Coquimbo', lat: -29.953, lon: -71.343, region: 'Coquimbo', img: 'https://dondehospedarse.net/wp-content/uploads/2024/12/donde-alojarse-en-coquimbo-zonas-1024x576.jpeg' },
+    { name: 'La Serena', lat: -29.904, lon: -71.244, region: 'Coquimbo', img: 'https://conociendochile.com/wp-content/uploads/2018/01/La-Serena-1.png' },
+    { name: 'Antofagasta', lat: -23.650, lon: -70.400, region: 'Antofagasta', img: 'https://www.piensageotermia.com/wp-content/uploads/2014/09/2321488916_def55c592b_z.jpg' },
+    { name: 'Valparaíso', lat: -33.047, lon: -71.612, region: 'Valparaíso', img: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Concepción', lat: -36.827, lon: -73.050, region: 'Biobío', img: 'https://ww2.propital.com/hubfs/file_20220616094819.jpg' },
+    { name: 'Temuco', lat: -38.735, lon: -72.590, region: 'Araucanía', img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Puerto Montt', lat: -41.469, lon: -72.942, region: 'Los Lagos', img: 'https://denomades.imgix.net/destinos/puerto-varas/487/city-tour-puerto-montt-puerto-varas-id487-838c.jpg?w=907&h=494&fit=crop&q=100&auto=format,compress&fm=webp' },
+    { name: 'Maipú', lat: -33.513, lon: -70.761, region: 'Región Metropolitana', img: 'https://assets-lvdm.storage.googleapis.com/wp-content/uploads/2024/03/maipu-8.jpg' },
+    { name: 'Puente Alto', lat: -33.614, lon: -70.575, region: 'Región Metropolitana', img: 'https://ifai.cl/wp-content/uploads/2019/06/Puente-Alto-1.jpg' },
+    { name: 'Ñuñoa', lat: -33.456, lon: -70.604, region: 'Región Metropolitana', img: 'https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Providencia', lat: -33.426, lon: -70.617, region: 'Región Metropolitana', img: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Las Condes', lat: -33.408, lon: -70.567, region: 'Región Metropolitana', img: 'https://media-front.elmostrador.cl/2020/06/LasCondes-700x438.png' }
 ];
 
 
