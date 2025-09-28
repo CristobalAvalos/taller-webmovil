@@ -25,6 +25,28 @@ async function cargarClima() {
 
     function renderCities(list) {
         grid.innerHTML = '';
+        // Si no hay ciudades, cerrar tarjeta expandida y mostrar mensaje
+        if (list.length === 0) {
+            if (expandedCard) {
+                expandedCard.classList.remove(
+                    'fixed', 'inset-0', 'z-50', 'overflow-y-auto', 'overflow-x-auto',
+                    'h-screen', 'bg-blue-100', 'max-w-full', 'right-0', 'left-0', 'box-border'
+                );
+                expandedCard.querySelector('.card-img').classList.remove('h-64');
+                expandedCard.querySelector('.card-title').classList.remove('text-3xl');
+                expandedCard.querySelector('.card-temp').classList.remove('text-xl');
+                expandedCard.querySelector('.card-wind').classList.remove('text-lg');
+                expandedCard.querySelector('.card-desc').classList.remove('text-lg');
+                expandedCard.querySelector('.extra-details').classList.add('hidden');
+                expandedCard = null;
+            }
+            // Mostrar mensaje de no resultados con margen superior
+            const msg = document.createElement('div');
+            msg.className = 'text-center text-gray-500 w-full py-8 mt-32'; // <-- margen superior agregado
+            msg.textContent = 'No se encontraron resultados.';
+            grid.appendChild(msg);
+            return;
+        }
         for (const city of list) {
             const res = city._weatherData;
             const weather = res ? res.current_weather : null;
