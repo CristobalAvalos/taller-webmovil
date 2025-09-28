@@ -83,7 +83,7 @@ async function getAnimalitos () {
 
         const filtroActivo = document.getElementById("filtro-activo");
         filtroActivo.textContent = "Mostrando todos los animales";
-        
+
     } catch (error) {
         console.error(error);
     }
