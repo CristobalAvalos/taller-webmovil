@@ -42,7 +42,7 @@ async function cargarClima() {
             }
             // Mostrar mensaje de no resultados con margen superior
             const msg = document.createElement('div');
-            msg.className = 'text-center text-gray-500 w-full py-8 mt-32'; // <-- margen superior agregado
+            msg.className = 'text-center text-gray-500 w-full py-8 mt-32'; 
             msg.textContent = 'No se encontraron resultados.';
             grid.appendChild(msg);
             return;
