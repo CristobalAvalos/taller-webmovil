@@ -48,34 +48,19 @@ async function mostrarDivsPorTiposIndividuales(listaTipos, tiposDisponibles) {
 async function cargarPokesPorTipoConSelector(tipo, tiposDisponibles = [], contenedor = null, replaceDiv = null, tipoES = null) {
     if (!contenedor) contenedor = document.querySelector('#pokeSections');
     try {
-        const res = await fetch(`https://pokeapi.co/api/v2/type/${tipo}`);
-        const data = await res.json();
-        const pokemons = data.pokemon.map(p => p.pokemon);
-        const mezclados = pokemons
-            .map(p => ({p, sort: Math.random()}))
-            .sort((a, b) => a.sort - b.sort)
-            .map(({p}) => p)
-            .slice(0, 6);
-        const detalles = await Promise.all(
-            mezclados.map(async poke => {
-                const resPoke = await fetch(poke.url);
-                const pokeData = await resPoke.json();
-                // Traduce los tipos del Pokémon al español
-                const tiposTraducidos = await Promise.all(
-                    pokeData.types.map(async t => {
-                        const resTipo = await fetch(t.type.url);
-                        const dataTipo = await resTipo.json();
-                        const nombreES = dataTipo.names.find(n => n.language.name === 'es');
-                        return nombreES ? nombreES.name : t.type.name;
-                    })
-                );
-                return {
-                    nombre: pokeData.name,
-                    imagen: pokeData.sprites.other['official-artwork'].front_default,
-                    tipos: tiposTraducidos
-                };
-            })
-        );
+        // Llamar a la API Express propia para obtener los pokemons por tipo.
+        // Cambia `API_BASE` si apuntas a producción (ej. URL de Railway).
+        const API_BASE = 'http://localhost:3002';
+        const res = await fetch(`${API_BASE}/pokemons?type=${encodeURIComponent(tipo)}&limit=6`);
+        const pokemons = await res.json();
+        // pokemons viene ya con los campos: name, types, description, pokedex_number, image_url
+        const detalles = pokemons.map(p => ({
+            nombre: p.name || p.nombre,
+            imagen: p.image_url || p.imagen || '',
+            tipos: p.types || p.tipos || [],
+            pokedex_number: p.pokedex_number || p.order || null,
+            descripcion: p.description || p.descripcion || ''
+        }));
 
         const sectionDiv = document.createElement('div');
         sectionDiv.className = 'bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-2xl mx-auto mb-8 relative';
@@ -153,24 +138,16 @@ async function cargarPokesPorTipoConSelector(tipo, tiposDisponibles = [], conten
                 const modalContent = modal.querySelector('.modal-content');
                 modalContent.innerHTML = '<div class="text-center text-gray-600">Cargando...</div>';
                 modal.style.display = 'flex';
-                // Obtener detalles extra del Pokémon (número y descripción)
+                // Usar los datos ya provistos por la API Express (número y descripción)
                 try {
-                    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.nombre}`);
-                    const data = await res.json();
-                    // Obtener la descripción en español desde species
-                    let descripcion = '';
-                    try {
-                        const resSpecies = await fetch(data.species.url);
-                        const dataSpecies = await resSpecies.json();
-                        const flavor = dataSpecies.flavor_text_entries.find(f => f.language.name === 'es');
-                        descripcion = flavor ? flavor.flavor_text.replace(/\f|\n/g, ' ') : '';
-                    } catch {}
+                    const descripcion = poke.descripcion || '';
+                    const pokedexNum = poke.pokedex_number || 'N/A';
                     modalContent.innerHTML = `
                         <button id="close-modal" class="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-2xl font-bold">&times;</button>
                         <img src="${poke.imagen}" alt="${poke.nombre}" class="w-32 h-32 object-contain mx-auto mb-2" />
                         <h2 class="text-2xl font-bold text-gray-800 capitalize mb-2">${poke.nombre}</h2>
                         <p class="mb-1"><strong>Tipo:</strong> ${poke.tipos.join(', ')}</p>
-                        <p class="mb-1"><strong>Número en Pokédex:</strong> ${data.order}</p>
+                        <p class="mb-1"><strong>Número en Pokédex:</strong> ${pokedexNum}</p>
                         <p class="mb-2"><strong>Descripción:</strong> ${descripcion}</p>
                     `;
                     // Cerrar la tarjeta emergente
